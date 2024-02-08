@@ -23,8 +23,8 @@ public class EventsController : ControllerBase
         if (name != null)
             query = query.Where(x => x.Name != null && x.Name.ToUpper().Contains(name.ToUpper()));
 
-        //if (location != null)
-          //  query = query.Where(x => x.Location != null && x.Location.ToUpper().Contains(location.ToUpper()));
+        if (location != null)
+            query = query.Where(x => x.Location != null && x.Location.ToUpper().Contains(location.ToUpper()));
 
         return query.ToList();
     }
@@ -60,7 +60,7 @@ public class EventsController : ControllerBase
     [HttpPost]
     public ActionResult<Event> PostEvent(Event testevent)
     {
-        var dbExercise = _context.Tests!.Find(testevent.Id);
+        var dbExercise = _context.Events!.Find(testevent.Id, testevent.Name, testevent.Location);
         if (dbExercise == null)
         {
             _context.Add(testevent);

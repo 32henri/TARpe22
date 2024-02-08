@@ -2,7 +2,7 @@
 
 namespace ITB2203Application.Controllers
 {
-    public class Attendee : Controller
+    public class AttendeesController : Controller
     {
         public IActionResult Index()
         {
