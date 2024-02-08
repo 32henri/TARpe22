@@ -65,6 +65,7 @@ public class EventsController : ControllerBase
         {
             _context.Add(testevent);
             _context.SaveChanges();
+            
 
             return CreatedAtAction(nameof(GetEvent), new { Id = testevent.Id }, testevent);
         }
