@@ -1,95 +1,104 @@
 ﻿using ITB2203Application.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace ITB2203Application.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class EventsController : ControllerBase
+namespace ITB2203Application.Controllers
 {
-    private readonly DataContext _context;
-
-    public EventsController(DataContext context)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class EventsController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly DataContext _context;
 
-    [HttpGet]
-    public ActionResult<IEnumerable<Event>> GetEvents(string? name = null, string? location = null, int? speakerid = null)
-    {
-        var query = _context.Events!.AsQueryable();
-
-        if (name != null)
-            query = query.Where(x => x.Name != null && x.Name.ToUpper().Contains(name.ToUpper()));
-
-        if (location != null)
-            query = query.Where(x => x.Location != null && x.Location.ToUpper().Contains(location.ToUpper()));
-        
-        //if (speakerid != null)
-          //  query = query.Where(x => x.SpeakerId != null && x.SpeakerId.ToUpper().Contains(speakerid.ToUpper()));
-
-        return query.ToList();
-    }
-
-    [HttpGet("{id}")]
-    public ActionResult<TextReader> GetEvent(int id)
-    {
-        var testevent = _context.Events!.Find(id);
-
-        if (testevent == null)
+        public EventsController(DataContext context)
         {
-            return NotFound();
+            _context = context;
         }
 
-        return Ok(testevent);
-    }
-
-    [HttpPut("{id}")]
-    public IActionResult PutEvent(int id, string name, Event testevent)
-    {
-        var dbEvent = _context.Events!.AsNoTracking().FirstOrDefault(x => x.Id == testevent.Id);
-        if (id != testevent.Id || dbEvent == null)
+        [HttpGet]
+        public ActionResult<IEnumerable<Event>> GetEvents(string? name = null, string? location = null, int? speakerId = null)
         {
-            return NotFound();
+            IQueryable<Event> query = _context.Events;
+
+            if (!string.IsNullOrEmpty(name))
+                query = query.Where(x => x.Name.ToUpper().Contains(name.ToUpper()));
+
+            if (!string.IsNullOrEmpty(location))
+                query = query.Where(x => x.Location.ToUpper().Contains(location.ToUpper()));
+
+            if (speakerId != null)
+                query = query.Where(x => x.SpeakerId == speakerId);
+
+            return query.ToList();
         }
 
-        _context.Update(testevent);
-        _context.SaveChanges();
-
-        return NoContent();
-    }
-
-    [HttpPost]
-    public ActionResult<Event> PostEvent(Event testevent)
-    {
-        var dbExercise = _context.Events!.Find(testevent.Id, testevent.Name, testevent.Location);
-        if (dbExercise == null)
+        [HttpGet("{id}")]
+        public ActionResult<Event> GetEvent(int id)
         {
-            _context.Add(testevent.Name);
+            var testEvent = _context.Events.Find(id);
+
+            if (testEvent == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(testEvent);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult PutEvent(int id, Event testEvent)
+        {
+            if (id != testEvent.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(testEvent).State = EntityState.Modified;
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Events.Any(e => e.Id == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpPost]
+        public ActionResult<Event> PostEvent(Event testEvent)
+        {
+            _context.Events.Add(testEvent);
             _context.SaveChanges();
-            
-            
-            return CreatedAtAction(nameof(GetEvent), new { Id = testevent.Id }, testevent);
+
+            return CreatedAtAction(nameof(GetEvent), new { id = testEvent.Id }, testEvent);
         }
-        else
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteEvent(int id)
         {
-            return Conflict();
+            var testEvent = _context.Events.Find(id);
+            if (testEvent == null)
+            {
+                return NotFound();
+            }
+
+            _context.Events.Remove(testEvent);
+            _context.SaveChanges();
+
+            return NoContent();
         }
-    }
-
-    [HttpDelete("{id}")]
-    public IActionResult DeleteEvent(int id)
-    {
-        var testevent = _context.Events!.Find(id);
-        if (testevent == null)
-        {
-            return NotFound();
-        }
-
-        _context.Remove(testevent);
-        _context.SaveChanges();
-
-        return NoContent();
     }
 }
