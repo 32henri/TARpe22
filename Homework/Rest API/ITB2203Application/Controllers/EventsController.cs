@@ -16,7 +16,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Event>> GetEvents(string? name = null, string? location = null)
+    public ActionResult<IEnumerable<Event>> GetEvents(string? name = null, string? location = null, int? speakerid = null)
     {
         var query = _context.Events!.AsQueryable();
 
@@ -25,6 +25,9 @@ public class EventsController : ControllerBase
 
         if (location != null)
             query = query.Where(x => x.Location != null && x.Location.ToUpper().Contains(location.ToUpper()));
+        
+        //if (speakerid != null)
+          //  query = query.Where(x => x.SpeakerId != null && x.SpeakerId.ToUpper().Contains(speakerid.ToUpper()));
 
         return query.ToList();
     }
@@ -43,7 +46,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult PutEvent(int id, Event testevent)
+    public IActionResult PutEvent(int id, string name, Event testevent)
     {
         var dbEvent = _context.Events!.AsNoTracking().FirstOrDefault(x => x.Id == testevent.Id);
         if (id != testevent.Id || dbEvent == null)
@@ -63,10 +66,10 @@ public class EventsController : ControllerBase
         var dbExercise = _context.Events!.Find(testevent.Id, testevent.Name, testevent.Location);
         if (dbExercise == null)
         {
-            _context.Add(testevent);
+            _context.Add(testevent.Name);
             _context.SaveChanges();
             
-
+            
             return CreatedAtAction(nameof(GetEvent), new { Id = testevent.Id }, testevent);
         }
         else

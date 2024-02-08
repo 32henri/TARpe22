@@ -55,7 +55,7 @@ public class SpeakersController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Speaker> PostTest(Speaker speaker)
+    public ActionResult<Speaker> PostSpeaker(Speaker speaker)
     {
         var dbExercise = _context.Speakers!.Find(speaker.Id_Name);
         if (dbExercise == null)
