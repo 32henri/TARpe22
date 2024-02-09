@@ -1,104 +1,96 @@
 ﻿using ITB2203Application.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
-namespace ITB2203Application.Controllers
+namespace ITB2203Application.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class SpeakersController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class SpeakersController : ControllerBase
+    private readonly DataContext _context;
+
+    public SpeakersController(DataContext context)
     {
-        private readonly DataContext _context;
+        _context = context;
+    }
 
-        public SpeakersController(DataContext context)
+    [HttpGet]
+    public ActionResult<IEnumerable<Speaker>> GetSpeakers(string? name = null, string? email = null)
+    {
+        var query = _context.Speakers!.AsQueryable();
+
+        if (name != null)
+            query = query.Where(x => x.Name != null && x.Name.ToUpper().Contains(name.ToUpper()));
+        
+        if (email != null)
+            query = query.Where(x => x.Email != null && x.Email.ToUpper().Contains(email.ToUpper()));
+
+        return query.ToList();
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<TextReader> GetSpeaker(int id)
+    {
+        var speaker = _context.Speakers!.Find(id);
+
+        if (speaker == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Speaker>> GetSpeakers(string? name = null)
+        return Ok(speaker);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult PutSpeaker(int id, Speaker speaker)
+    {
+        var dbSpeaker = _context.Speakers!.AsNoTracking().FirstOrDefault(x => x.Id == speaker.Id);
+        if (id != speaker.Id || dbSpeaker == null)
         {
-            var query = _context.Speakers.AsQueryable();
-
-            if (name != null)
-                query = query.Where(x => x.Name != null && x.Name.ToUpper().Contains(name.ToUpper()));
-
-            return query.ToList();
+            return NotFound();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Speaker> GetSpeaker(string id)
+        _context.Update(speaker);
+        _context.SaveChanges();
+
+        return NoContent();
+    }
+
+    [HttpPost]
+    public ActionResult<Speaker> PostSpeaker(Speaker speaker)
+    {
+        
+        var dbExercise = _context.Speakers!.Find(speaker.Id);
+        if (!speaker.Email.Contains("@"))
         {
-            var speaker = _context.Speakers.Find(id);
-
-            if (speaker == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(speaker);
+            return BadRequest("Invalid email format.");
         }
-
-        [HttpPut("{id}")]
-        public IActionResult PutSpeaker(string id, Speaker speaker)
+        if (dbExercise == null)
         {
-            if (id != speaker.Name)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(speaker).State = EntityState.Modified;
-
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Speakers.Any(e => e.Name == id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        [HttpPost]
-        public ActionResult<Speaker> PostSpeaker(Speaker speaker)
-        {
-            var dbSpeaker = _context.Speakers.Find(speaker.Name);
-            if (dbSpeaker != null)
-            {
-                return Conflict();
-            }
-
-            _context.Speakers.Add(speaker);
+            _context.Add(speaker);
             _context.SaveChanges();
 
-            return CreatedAtAction(nameof(GetSpeaker), new { id = speaker.Name }, speaker);
+            return CreatedAtAction(nameof(GetSpeaker), new { Id = speaker.Id }, speaker);
         }
-
-        [HttpDelete("{id}")]
-        public IActionResult DeleteSpeaker(string id)
+        else
         {
-            var speaker = _context.Speakers.Find(id);
-            if (speaker == null)
-            {
-                return NotFound();
-            }
-
-            _context.Speakers.Remove(speaker);
-            _context.SaveChanges();
-
-            return NoContent();
+            return Conflict();
         }
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteSpeaker(int id)
+    {
+        var speaker = _context.Speakers!.Find(id);
+        if (speaker == null)
+        {
+            return NotFound();
+        }
+
+        _context.Remove(speaker);
+        _context.SaveChanges();
+
+        return NoContent();
     }
 }

@@ -79,6 +79,10 @@ namespace ITB2203Application.Controllers
         public ActionResult<Attendee> PostAttendee(Attendee attendee)
         {
             var existingAttendee = _context.Attendees.FirstOrDefault(a => a.Id == attendee.Id);
+            if (!attendee.Email.Contains("@"))
+            {
+                return BadRequest("Invalid email format.");
+            }
 
             if (existingAttendee != null)
             {
