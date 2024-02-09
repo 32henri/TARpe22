@@ -90,6 +90,7 @@ namespace ITB2203Application.Controllers
         public IActionResult DeleteEvent(int id)
         {
             var testEvent = _context.Events.Find(id);
+
             if (testEvent == null)
             {
                 return NotFound();
