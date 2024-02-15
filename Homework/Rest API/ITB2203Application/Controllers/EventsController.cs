@@ -80,6 +80,15 @@ namespace ITB2203Application.Controllers
         [HttpPost]
         public ActionResult<Event> PostEvent(Event testEvent)
         {
+            
+            var existingSpeaker = _context.Speakers.Any(s => s.Id == testEvent.SpeakerId);
+
+            
+            if (!existingSpeaker)
+            {
+                return NotFound();
+            }
+
             _context.Events.Add(testEvent);
             _context.SaveChanges();
 

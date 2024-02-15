@@ -78,17 +78,36 @@ namespace ITB2203Application.Controllers
         [HttpPost]
         public ActionResult<Attendee> PostAttendee(Attendee attendee)
         {
-            var existingAttendee = _context.Attendees.FirstOrDefault(a => a.Id == attendee.Id);
+
+            var existingEvent = _context.Events.Any(e => e.Id == attendee.EventId);
+
+            
+            if (!existingEvent)
+            {
+                return NotFound("Event not found.");
+            }
+
+            
             if (string.IsNullOrEmpty(attendee.Email) || !attendee.Email.Contains("@"))
             {
                 return BadRequest("Invalid email format.");
             }
 
-            if (existingAttendee != null)
+            
+            var existingAttendeeWithEmail = _context.Attendees.FirstOrDefault(a => a.Email == attendee.Email);
+            if (existingAttendeeWithEmail != null)
             {
-                return Conflict();
+                return BadRequest("An attendee with the same email already exists.");
             }
 
+            
+            var speakerWithEmail = _context.Speakers.FirstOrDefault(s => s.Email == attendee.Email);
+            if (speakerWithEmail != null)
+            {
+                return BadRequest("A speaker with the same email already exists for the event.");
+            }
+
+            
             _context.Attendees.Add(attendee);
             _context.SaveChanges();
 
