@@ -18,3 +18,13 @@ DTOdel saab olla rohkem omadusi kui domain modelitel.
 DTOd saab ettevõtte nõuete järgi kohandada.
 DTOd parandavad ka aplikatsiooni jõudlust kuna nendega saab kätte saada vaid vajalikud andmed.
 Samuti teeb see ka turvalisemaks kuna limiteerib andmete hulka mis on kliendile kättesaadav.
+
+
+Video REST API for Beginners:
+Aplikatsiooni kaheks eraldi projektiks tegemine on kliendile parem,
+kuna saad api definitsiooni defineerida class libraryna ja nuget packagine avaldada.
+10.48
+
+
+
+
