@@ -23,7 +23,9 @@ Samuti teeb see ka turvalisemaks kuna limiteerib andmete hulka mis on kliendile 
 Video REST API for Beginners:
 Aplikatsiooni kaheks eraldi projektiks tegemine on kliendile parem,
 kuna saad api definitsiooni defineerida class libraryna ja nuget packagine avaldada.
-10.48
+Builder variablet saab kasutada dependency injectioniks ja konfigureerimiseks.
+Framework laseb endpoitsidele panna klassi eesliidese ilma sõna controllerita.
+Päringut on halb talletada nagu see on andmebaasis, sest see ei oma kõiki omadusi mida me tahame.
 
 
 
