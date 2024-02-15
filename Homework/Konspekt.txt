@@ -24,7 +24,7 @@ Video REST API for Beginners:
 Aplikatsiooni kaheks eraldi projektiks tegemine on kliendile parem,
 kuna saad api definitsiooni defineerida class libraryna ja nuget packagine avaldada.
 Builder variablet saab kasutada dependency injectioniks ja konfigureerimiseks.
-Framework laseb endpoitsidele panna klassi eesliidese ilma sõna controllerita.
+Framework laseb endpoitsidele panna klassi eesliidese kasutamata sõna controller.
 Päringut on halb talletada nagu see on andmebaasis, sest see ei oma kõiki omadusi mida me tahame.
 
 
