@@ -28,5 +28,13 @@ Framework laseb endpoitsidele panna klassi eesliidese ilma sõna controllerita.
 Päringut on halb talletada nagu see on andmebaasis, sest see ei oma kõiki omadusi mida me tahame.
 
 
+Vue.js for Beginners:
+
+
+
+
+
+
+
 
 
