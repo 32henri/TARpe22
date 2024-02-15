@@ -1,0 +1,10 @@
+Video Course Including CRUD:
+Uue API projekti loomisel solution nime lõppu mitte panna .API, kuna solutionis võib olla mitu projekti.
+Projekt on struktuur failide ja kaustade organiseerimiseks ühte kohta.
+ASP.NET Core annab algselt dependancy injectioni.
+Middleware on tarkvara mis on pandud kokku aplikatsiooniks mis haldab taotlusi ja vastuseid.
+ASP.NET teeb skaleeritavate ja hooldatavate restful apide implementeerimise lihtsaks.
+ASP.Net Core web apis on Routing sissetulevate HTTP taotluste ühildamise protsess.
+ASP.NET Coreis on DB context klass mis esindab sessioon andmebaasiga ja pakub apisi andmebaasi operatsioonide tegemiseks.
+Lisaks on see veel vastutav andmebaasiga ühenduse pidamise ja andmete muutumuse jälgimisega.
+Võib öelda, et DB context käitub sillana domain model klasside ja andmebaasi vahel.
