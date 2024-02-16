@@ -2,40 +2,39 @@
   <div
     class="min-h-screen bg-grey-50 py-12 px-4 sm:px-6 lg:px=8 text-black-300"
   >
-    <div class="text-center">
-      <h1 class="font-bold">{{ title }}</h1>
-      <DataTable :value="events" v-if="events.length > 0">
-        <Column field="type" header="Nimetus" />
-        <Column field="location" header="Asukoht" />
-        <Column field="date" header="Kuupäev" />
-        <Column field="time" header="Kellaaeg" />
-        <Column v-if="!isAthlete">
-          <template #body="{ data }">
-            <router-link
-                class="border bg-blue-400 text-blue-900 py-0 px-2 mx-2 border-red-900 font-bold"
-                :to="'update/' + data.id"
-              >
-                ⭮
-              </router-link>
+      <div class="text-center">
+          <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                  <a href="http://localhost:5173/" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              </div>
+          </div>
+          <h1 class="font-bold">{{ title }}</h1>
+          <DataTable :value="events" v-if="events.length > 0">
+              <Column field="type" header="Nimetus" />
+              <Column field="location" header="Asukoht" />
+              <Column field="date" header="Kuupäev" />
+              <Column field="time" header="Kellaaeg" />
+              <Column v-if="!isAthlete">
+                  <template #body="{ data }">
+                      <router-link class="border bg-blue-400 text-blue-900 py-0 px-2 mx-2 border-red-900 font-bold"
+                                   :to="'update/' + data.id">
+                          ⭮
+                      </router-link>
 
-            <button
-              class="border bg-red-400 text-white py-0 px-2 border-red-900 font-bold"
-              @click="remove(data)"
-            >
-              Delete
-            </button>
+                      <button class="border bg-red-400 text-white py-0 px-2 border-red-900 font-bold"
+                              @click="remove(data)">
+                          Delete
+                      </button>
 
-            <button
-              class="border bg-green-400 text-white py-0 px-2 border-green-900 font-bold"
-              @click="showDetails(data)"
-            >
-              Details
-            </button>
-          </template>
-        </Column>
-      </DataTable>
-      <div v-else>Sündmused puuduvad</div>
-    </div>
+                      <button class="border bg-green-400 text-white py-0 px-2 border-green-900 font-bold"
+                              @click="showDetails(data)">
+                          Details
+                      </button>
+                  </template>
+              </Column>
+          </DataTable>
+          <div v-else>Sündmused puuduvad</div>
+      </div>
     <div v-if="showPopup" class="popup">
       <div class="popup-inner">
         <h2>Event Details</h2>
