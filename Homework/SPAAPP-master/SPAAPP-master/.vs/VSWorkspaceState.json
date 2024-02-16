@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\teamtrack-api",
+    "\\teamtrack-api\\Controllers",
+    "\\teamtrack-api\\Model",
+    "\\teamtrack-frontend",
+    "\\teamtrack-frontend\\public"
+  ],
+  "SelectedNode": "\\teamtrack-api\\Controllers\\EventsController.cs",
+  "PreviewInSolutionExplorer": false
+}
