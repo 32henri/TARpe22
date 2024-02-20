@@ -34,8 +34,10 @@ Vue võtab aplikatsioonis vähe ruumi ja teeb sell effektiivsemaks ja kiiremaks.
 Vue version 1 väljalase oli 2014 aastal, peale mida see sai värskendusi ja kogus populaarsust.
 Vue enda koodi lisamiseks tuleb ainult rida koodi kirjutada.
 HTMLi ja Vue.js JavaScripti saab ühendada kasutades Vue directivse.
-24.47
-
+Aplikatsiooni on hea teha eraldi VUE komponentideks.
+Komponente saab kasutada komponentide sees.
+Võtme mis unikaalselt tuvastab elemendi aitab jõudlust parandada.
+1.36.42
 
 
 
