@@ -37,7 +37,10 @@ HTMLi ja Vue.js JavaScripti saab ühendada kasutades Vue directivse.
 Aplikatsiooni on hea teha eraldi VUE komponentideks.
 Komponente saab kasutada komponentide sees.
 Võtme mis unikaalselt tuvastab elemendi aitab jõudlust parandada.
-1.36.42
+Vue.js saab saab teha eraldi JavaScripti failiks ja saab kasutada mitme lehe peal, et oleks mugavam.
+Vue cli tõmmates cmd-ga saad valida versiooni ja paketid mis tahad.
+Stiili kasutamiseks Vue failides on mõtekas teha eraldi fail selleks, kuna kui ühte komponenti stiili kirjutamisel on see ka teistes komponentides kasutuse.
+3.21.45
 
 
 
