@@ -40,7 +40,7 @@ Võtme mis unikaalselt tuvastab elemendi aitab jõudlust parandada.
 Vue.js saab saab teha eraldi JavaScripti failiks ja saab kasutada mitme lehe peal, et oleks mugavam.
 Vue cli tõmmates cmd-ga saad valida versiooni ja paketid mis tahad.
 Stiili kasutamiseks Vue failides on mõtekas teha eraldi fail selleks, kuna kui ühte komponenti stiili kirjutamisel on see ka teistes komponentides kasutuse.
-3.21.45
+Muutujaid saab hoida Parent componentides ja children componendid saavad neid kutsuda ja uuendada.
 
 
 
