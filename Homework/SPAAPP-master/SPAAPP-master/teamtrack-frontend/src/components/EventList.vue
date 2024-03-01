@@ -12,7 +12,7 @@
           <DataTable :value="events" v-if="events.length > 0">
               <Column field="type" header="Nimetus" />
               <Column field="location" header="Asukoht" />
-              <Column header="Kuupäev" >
+              <Column id="Column" name="Column" header="Kuupäev" >
               <template #body="{data}">
                 {{ showDate(data.date).date }}
 
@@ -26,17 +26,17 @@
               </Column>
               <Column v-if="!isAthlete">
                   <template #body="{ data }">
-                      <router-link class="border bg-blue-400 text-blue-900 py-0 px-2 mx-2 border-red-900 font-bold"
+                      <router-link class="ring"
                                    :to="'update/' + data.id">
                           ⭮
                       </router-link>
 
-                      <button class="border bg-red-400 text-white py-0 px-2 border-red-900 font-bold"
+                      <button class="delete"
                               @click="remove(data)">
                           Delete
                       </button>
 
-                      <button class="border bg-green-400 text-white py-0 px-2 border-green-900 font-bold"
+                      <button class="details"
                               @click="showDetails(data)">
                           Details
                       </button>
@@ -117,6 +117,32 @@ const remove = (event: Event) => {
   color: #111827; /* Dark grey for better readability */
 }
 
+.ring{
+  color: lightskyblue ;
+}
+
+.ring:hover{
+  animation: colorchange1 1s infinite;
+}
+.delete{
+
+  font-weight: bold;
+  color: white;
+  background-color: rgb(255, 0, 0);
+  padding: 0.00000005rem 0.5rem;
+}
+.delete:hover{
+  animation: colorchange2 1s infinite;
+}
+.details{
+font-weight: bold;
+color: white;
+background-color: rgb(37, 179, 37);
+padding: 0.00000005rem 0.5rem;
+}
+.details:hover{
+  animation: colorchange3 1s infinite;
+}
 /* Typography and spacing */
 h1 {
   padding: 1rem 0; /* More vertical padding */
@@ -148,14 +174,14 @@ button:hover, .router-link:hover {
 }
 
 .popup-inner {
-  background-color: #fff; /* White background for the popup */
+  background-color: rgb(76, 202, 76); /* White background for the popup */
   padding: 40px; /* More padding for a spacious look */
   border-radius: 15px; /* Rounded corners */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Softer shadow for depth */
   position: relative; /* For absolute positioning of close button */
   width: 90%; /* Max width to support responsiveness */
   max-width: 500px; /* Maximum width of the popup */
-  transition: transform 0.3s ease-in-out; /* Transform transition for a pop effect */
+  transition: transform 1.3s ease-in-out; /* Transform transition for a pop effect */
   transform: scale(1.05); /* Start slightly larger */
 }
 
@@ -201,8 +227,7 @@ button:hover, .router-link:hover {
 
 .popupClose:hover,
 .popupClose:focus {
-  background-color: #e11d48; /* Darker shade for hover effect */
-  color: #fff;
+  animation: colorchange 1s infinite; /* Darker shade for hover effect */
   outline: none; /* Remove outline on focus for a cleaner look */
 }
 
@@ -226,7 +251,7 @@ button:hover, .router-link:hover {
 
 .Column {
   /* Assuming custom classnames for Column */
-  text-align: left; /* Align text to the left for readability */
+  text-align: right; /* Align text to the left for readability */
   padding: 0.75rem 1rem; /* Padding within cells */
 }
 
@@ -235,6 +260,27 @@ button:hover, .router-link:hover {
   .min-h-screen {
     padding: 2rem; /* More padding on larger screens */
   }
+}
+@keyframes colorchange{
+  0% {color: red;}
+  100% {color: rgb(76, 202, 76);}
+
+}
+
+@keyframes colorchange1{
+  0% {color: blue}
+  100% {color: lightskyblue}
+
+}
+@keyframes colorchange2{
+  0% {color: red}
+  100% {color: white;}
+
+}
+@keyframes colorchange3{
+  0% {color: rgb(37, 179, 37)}
+  100% {color: white;}
+
 }
 </style>
 
