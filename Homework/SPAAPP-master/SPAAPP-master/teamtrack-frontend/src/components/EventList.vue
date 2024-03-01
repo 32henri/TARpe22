@@ -4,9 +4,6 @@
   >
       <div class="text-center">
           <div class="hidden md:block">
-              <div class="ml-10 flex items-baseline space-x-4">
-                  <a href="http://localhost:5173/" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-              </div>
           </div>
           <h1 class="font-bold">{{ title }}</h1>
           <DataTable :value="events" v-if="events.length > 0">
@@ -113,9 +110,10 @@ const remove = (event: Event) => {
 <style>
 /* General styles */
 .min-h-screen {
-  background-color: #f8fafc; /* A softer shade of grey */
+  background-color: lightblue; /* A softer shade of grey */
   color: #111827; /* Dark grey for better readability */
 }
+
 
 .ring{
   color: lightskyblue ;
