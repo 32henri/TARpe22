@@ -3,6 +3,9 @@
     <a href="/">Home</a>
     <a href="/coachEvents">Olen Treener</a>
     <a href="/athleteEvents">Olen Sportlane</a>
+    <a href="/newevent">Lisa sündmus</a>
+    <a href="/eventPeople">Isikute Sündmused</a>
+    <a href="/peopleStore">Inimesed</a>
 </template>
 
 <script lang="ts">

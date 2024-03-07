@@ -24,6 +24,18 @@ const routes: Array<RouteRecordRaw> = [
     props: { title: 'Sündmused', isAthlete: false},
   },
   {
+    path: '/eventPeople',
+    name: 'Isikute sündmused',
+    component: EventsVue,
+    props: { title: 'Sündmused', isAthlete: false},
+  },
+  {
+    path: '/peopleStore',
+    name: 'Isikud',
+    component: EventsVue,
+    props: { title: 'Sündmused', isAthlete: false},
+  },
+  {
     path: '/newevent',
     name: 'Lisa uus sündmus',
     component: AddEventVue,
