@@ -1,11 +1,46 @@
 <template>
   <div>
     <DataTable :value="events">
+      <Column field="type" header="Nimetus" />
 
     </DataTable>
   </div>
 </template>
   
+<script setup lang="ts">
+import { EventPeople } from '@/models/eventPeople';
+import { useEventPeopleStore } from "@/stores/eventPeopleStore";
+import { storeToRefs } from "pinia";
+import { defineProps, onMounted, ref, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+
+watch(route, (to, from) => {
+  if (to.path !== from.path || to.query !== from.query) {
+    eventsStore.load();
+  }
+}, { deep: true });
+
+defineProps<{ title: String, isAthlete: Boolean }>();
+
+const showPopup = ref(false);
+const selectedEvent = ref({});
+
+const showDetails = (event: EventPeople) => {
+  selectedEvent.value = event;
+  showPopup.value = true;
+};
+
+const eventsStore = useEventPeopleStore();
+const { events } = storeToRefs(eventsStore);
+
+onMounted(() => {
+  eventsStore.load();
+});
+
+
+</script>
   <style>
   /* General styles */
   .min-h-screen {

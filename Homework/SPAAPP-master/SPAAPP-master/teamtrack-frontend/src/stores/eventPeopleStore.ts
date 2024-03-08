@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 import useApi, { useApiRawRequest } from "@/models/api";
 
-export const useEventsStore = defineStore('eventPeopleStore', () => {
+export const useEventPeopleStore = defineStore('eventPeopleStore', () => {
   const apiGetEvents = useApi<EventPeople[]>('peopleevents');
   const events = ref<EventPeople[]>([]);
   let allEvents: EventPeople[] = [];
