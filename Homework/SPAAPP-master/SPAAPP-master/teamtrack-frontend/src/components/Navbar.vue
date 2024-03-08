@@ -1,6 +1,6 @@
 <template>
 
-    <a href="/">Home</a>
+    <a href="/">Koduleht</a>
     <a href="/coachEvents">Olen Treener</a>
     <a href="/athleteEvents">Olen Sportlane</a>
     <a href="/newevent">Lisa sündmus</a>

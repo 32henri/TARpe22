@@ -65,6 +65,7 @@ public class DataContext: DbContext {
                 Location = "Järvamaa",
                 Attendance = true,
             }
+            
         );
     }
 }

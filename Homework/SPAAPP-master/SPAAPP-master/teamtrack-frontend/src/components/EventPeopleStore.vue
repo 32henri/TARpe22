@@ -1,4 +1,10 @@
+<template>
+  <div>
+    <DataTable :value="events">
 
+    </DataTable>
+  </div>
+</template>
   
   <style>
   /* General styles */
