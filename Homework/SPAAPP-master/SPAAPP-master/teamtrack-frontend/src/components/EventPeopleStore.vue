@@ -1,11 +1,51 @@
 <template>
-  <div>
-    <DataTable :value="events">
-      <Column field="type" header="Nimetus" />
+  <div
+    class="min-h-screen bg-grey-50 py-12 px-4 sm:px-6 lg:px=8 text-black-300"
+  >
+      <div class="text-center">
+          <div class="hidden md:block">
+          </div>
+          <h1 class="font-bold">{{ title }}</h1>
+          <DataTable :value="eventPeople" v-if="1 > 0">
+              <Column id="id" field="id" header="Id" />
+              <Column id="eventid" field="eventid" header="EventId" />
+              <Column id="personid" name="personid" header="PersonId" >
+              </Column>
+              <Column>
+                  <template #body="{ data }">
+                      <router-link class="ring"
+                                   :to="'update/' + data.id">
+                          ⭮
+                      </router-link>
 
-    </DataTable>
+                      <button class="delete"
+                              @click="remove(data)">
+                          Delete
+                      </button>
+
+                      <button class="details"
+                              @click="showDetails(data)">
+                          Details
+                      </button>
+                  </template>
+              </Column>
+          </DataTable>
+          <div v-else>Sündmused puuduvad</div>
+      </div>
+    <div v-if="showPopup" class="popup">
+      <div class="popup-inner">
+        <h2>Event Details</h2>
+        <ul>
+          <li v-for="(value, key) in selectedEvent" :key="key">
+            {{ key }}: {{ value }}
+          </li>
+        </ul>
+        <button @click="showPopup = false" class="popupClose">X</button>
+      </div>
+    </div>
   </div>
 </template>
+
   
 <script setup lang="ts">
 import { EventPeople } from '@/models/eventPeople';
@@ -18,7 +58,7 @@ const route = useRoute();
 
 watch(route, (to, from) => {
   if (to.path !== from.path || to.query !== from.query) {
-    eventsStore.load();
+    eventPeopleStore.load();
   }
 }, { deep: true });
 
@@ -32,11 +72,11 @@ const showDetails = (event: EventPeople) => {
   showPopup.value = true;
 };
 
-const eventsStore = useEventPeopleStore();
-const { events } = storeToRefs(eventsStore);
+const eventPeopleStore = useEventPeopleStore();
+const { eventPeople } = storeToRefs(eventPeopleStore);
 
 onMounted(() => {
-  eventsStore.load();
+  eventPeopleStore.load();
 });
 
 

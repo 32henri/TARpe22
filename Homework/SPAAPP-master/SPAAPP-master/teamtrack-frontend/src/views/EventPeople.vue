@@ -7,5 +7,5 @@
 import EventList from "../components/EventPeopleStore.vue"
     import { defineProps } from "vue";
     import navbar from "../components/Navbar.vue"
-  defineProps<{ title: String, isAthlete: Boolean }>();
+  defineProps<{ title: String}>();
   </script>

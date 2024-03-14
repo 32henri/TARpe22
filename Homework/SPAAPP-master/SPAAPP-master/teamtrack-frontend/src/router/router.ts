@@ -4,6 +4,7 @@ import AddEventVue from '@/views/AddEvent.vue';
 import UpdateEventVue from '@/views/UpdateEvent.vue'
 import HomePageViewVue from '@/views/HomePageView.vue';
 import EventPeopleVue from '@/views/EventPeople.vue';
+import EventPeopleStore from '@/views/PeopleStore.vue';
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -33,7 +34,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/peopleStore',
     name: 'Isikud',
-    component: EventsVue,
+    component: EventPeopleStore,
   },
   {
     path: '/newevent',
