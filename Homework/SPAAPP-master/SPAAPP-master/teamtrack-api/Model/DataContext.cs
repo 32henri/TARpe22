@@ -5,6 +5,8 @@ namespace teamtrack_api.Model;
 public class DataContext: DbContext {
     public DataContext(DbContextOptions<DataContext> options): base(options) {}
     public DbSet<Event>? EventList {get; set;}
+    public DbSet<EventPeople>? EventPeopleList {get; set;}
+    public DbSet<People>? PeopleList {get; set;}
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Event>().Property(p => p.Id).HasIdentityOptions(startValue: 1);
@@ -66,6 +68,44 @@ public class DataContext: DbContext {
                 Attendance = true,
             }
             
+        );
+        modelBuilder.Entity<EventPeople>().Property(p => p.Id).HasIdentityOptions(startValue: 1);
+        modelBuilder.Entity<EventPeople>().HasData(
+            new EventPeople{
+                Id = 1,
+                Eventd = 1,
+                PersonId = 1,
+            },
+            new EventPeople{
+                Id = 2,
+                Eventd = 2,
+                PersonId = 2,
+            },
+            new EventPeople{
+                Id = 3,
+                Eventd = 1,
+                PersonId = 3,
+            }
+
+
+        );
+        modelBuilder.Entity<People>().Property(p => p.Id).HasIdentityOptions(startValue: 1);
+        modelBuilder.Entity<People>().HasData(
+            new People{
+                Id = 1,
+                Username = "Maarek",
+                Email = "maarek@gmail.dumb",
+            },
+            new People{
+                Id = 2,
+                Username = "Indus",
+                Email = "indrus@gmail.dumb",
+            },
+            new People{
+                Id = 3,
+                Username = "Leemus",
+                Email = "leemusarek@gmail.dumb",
+            }
         );
     }
 }
