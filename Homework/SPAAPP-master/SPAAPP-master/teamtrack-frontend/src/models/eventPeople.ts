@@ -6,6 +6,6 @@ export interface EventPeople {
   }
   
   export interface State {
-    eventpeople: EventPeople[];
+    events: EventPeople[];
   }
   

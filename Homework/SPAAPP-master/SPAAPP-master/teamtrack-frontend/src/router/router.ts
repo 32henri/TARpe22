@@ -35,6 +35,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/peopleStore',
     name: 'Isikud',
     component: EventPeopleStore,
+    props: { title: 'Inimesed'},
   },
   {
     path: '/newevent',
