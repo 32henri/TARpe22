@@ -73,17 +73,17 @@ public class DataContext: DbContext {
         modelBuilder.Entity<EventPeople>().HasData(
             new EventPeople{
                 Id = 1,
-                Eventd = 1,
+                EventId = 1,
                 PersonId = 1,
             },
             new EventPeople{
                 Id = 2,
-                Eventd = 2,
+                EventId = 2,
                 PersonId = 2,
             },
             new EventPeople{
                 Id = 3,
-                Eventd = 1,
+                EventId = 1,
                 PersonId = 3,
             }
 
