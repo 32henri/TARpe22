@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 import useApi, { useApiRawRequest } from "@/models/api";
 
 export const useEventPeopleStore = defineStore('eventPeopleStore', () => {
-  const apiGetEvents = useApi<EventPeople[]>('peopleevents');
+  const apiGetEvents = useApi<EventPeople[]>('eventPeople');
   const events = ref<EventPeople[]>([]);
   let allEvents: EventPeople[] = [];
 

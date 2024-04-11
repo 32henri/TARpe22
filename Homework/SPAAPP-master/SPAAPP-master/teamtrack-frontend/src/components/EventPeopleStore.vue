@@ -8,8 +8,8 @@
           <h1 class="font-bold">{{ title }}</h1>
           <DataTable :value="events" v-if="events.length > 0">
               <Column field="id" header="ID" />
-              <Column field="eventid" header="Username" />
-              <Column field="personid" header="Email" />
+              <Column field="eventid" header="Event Id" />
+              <Column field="personid" header="Person Id" />
           </DataTable>
           <div v-else>Sündmused puuduvad</div>
       </div>

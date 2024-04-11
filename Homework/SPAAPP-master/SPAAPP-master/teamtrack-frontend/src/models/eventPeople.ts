@@ -1,11 +1,10 @@
 export interface EventPeople {
-    id: Number;
-    eventid: Number;
-    personid: Number;
+  id: Number;
+  eventid: String;
+  personid: String;
 
-  }
-  
-  export interface State {
-    events: EventPeople[];
-  }
-  
+}
+
+export interface State {
+  events: EventPeople[];
+}

@@ -2,6 +2,6 @@ namespace teamtrack_api.Model;
 
 public record EventPeople {
     public int Id {get; set;}
-    public int EventId {get; set;}
-    public int PersonId {get; set;}
+    public string? EventId {get; set;}
+    public string? PersonId {get; set;}
 }

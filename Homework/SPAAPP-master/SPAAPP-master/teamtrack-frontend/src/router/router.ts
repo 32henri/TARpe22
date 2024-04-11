@@ -4,6 +4,7 @@ import AddEventVue from '@/views/AddEvent.vue';
 import UpdateEventVue from '@/views/UpdateEvent.vue'
 import HomePageViewVue from '@/views/HomePageView.vue';
 import EventPeopleVue from '@/views/EventPeople.vue';
+import PeopleVue from '@/views/EventPeople.vue';
 import EventPeopleStore from '@/views/PeopleStore.vue';
 
 
@@ -17,18 +18,18 @@ const routes: Array<RouteRecordRaw> = [
     path: '/athleteEvents',
     name: 'Sportlase Sündmused',
     component: EventsVue,
-    props: { title: 'Sündmused', isAthlete: true},
+    props: { title: 'Sportlase Sündmused', isAthlete: true},
   },
   {
     path: '/coachEvents',
     name: 'Treeneri Sündmused',
     component: EventsVue,
-    props: { title: 'Sündmused', isAthlete: false},
+    props: { title: 'Treeneri Sündmused', isAthlete: false},
   },
   {
     path: '/eventPeople',
     name: 'Isikute sündmused',
-    component: EventPeopleVue,
+    component: PeopleVue,
     props: { title: 'Isikute sündmused'},
   },
   {
