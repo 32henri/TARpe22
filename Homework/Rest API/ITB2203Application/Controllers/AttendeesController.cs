@@ -20,9 +20,10 @@ namespace ITB2203Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Attendee>> GetAttendees(string? name = null, string? email = null)
+        public ActionResult<IEnumerable<Attendee>> GetAttendees(string? name = null, string? email = null, int? daysbefore = null)
         {
             var query = _context.Attendees.AsQueryable();
+
 
             if (name != null)
                 query = query.Where(x => x.Name != null && x.Name.ToUpper().Contains(name.ToUpper()));
@@ -30,6 +31,11 @@ namespace ITB2203Application.Controllers
             if (email != null)
                 query = query.Where(x => x.Email != null && x.Email.ToUpper().Contains(email.ToUpper()));
 
+            if (daysbefore != null)
+            {
+                query = query.Where(x=>(_context!.Events!.FirstOrDefault((e) => e.Id == x.EventId)!.Date!.Value - x.RegistrationTime).TotalDays > daysbefore);
+            }
+                
             return query.ToList();
         }
 
@@ -107,7 +113,15 @@ namespace ITB2203Application.Controllers
                 return BadRequest("A speaker with the same email already exists for the event.");
             }
 
+            var event1 = _context.Events.FirstOrDefault(x => x.Id == attendee.EventId);
+            if (event1.Date < attendee.RegistrationTime)
+            {
+                return BadRequest();
+            }
+
             
+
+
             _context.Attendees.Add(attendee);
             _context.SaveChanges();
 
