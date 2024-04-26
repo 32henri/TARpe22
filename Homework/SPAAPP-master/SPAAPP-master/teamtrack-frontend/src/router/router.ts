@@ -6,6 +6,7 @@ import HomePageViewVue from '@/views/HomePageView.vue';
 import EventPeopleVue from '@/views/EventPeople.vue';
 import PeopleVue from '@/views/EventPeople.vue';
 import EventPeopleStore from '@/views/PeopleStore.vue';
+import FunSites from '@/views/FunSites.vue';
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -37,6 +38,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Isikud',
     component: EventPeopleStore,
     props: { title: 'Inimesed'},
+  },
+  {
+    path: '/funSites',
+    name: 'Fun Sites',
+    component: FunSites,
+    props: { title: 'Fun Sites'},
   },
   {
     path: '/newevent',

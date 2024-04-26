@@ -7,6 +7,7 @@ public class DataContext: DbContext {
     public DbSet<Event>? EventList {get; set;}
     public DbSet<EventPeople>? EventPeopleList {get; set;}
     public DbSet<People>? PeopleList {get; set;}
+    public DbSet<Sites>? SitesList {get; set;}
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Event>().Property(p => p.Id).HasIdentityOptions(startValue: 1);
@@ -105,6 +106,13 @@ public class DataContext: DbContext {
                 Id = 3,
                 Username = "Leemus",
                 Email = "leemusarek@gmail.dumb",
+            }
+        );
+        modelBuilder.Entity<Sites>().Property(p => p.Id).HasIdentityOptions(startValue: 1);
+        modelBuilder.Entity<Sites>().HasData(
+            new Sites{
+                Id = 1,
+                Link = "https://tahvel.edu.ee/#/",
             }
         );
     }

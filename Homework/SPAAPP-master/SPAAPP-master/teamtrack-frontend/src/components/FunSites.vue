@@ -1,109 +1,33 @@
 <template>
-  <div
-    class="min-h-screen bg-grey-50 py-12 px-4 sm:px-6 lg:px=8 text-black-300"
-  >
       <div class="text-center">
           <div class="hidden md:block">
           </div>
           <h1 class="font-bold">{{ title }}</h1>
-          <DataTable :value="events" v-if="events.length > 0">
-              <Column field="type" header="Nimetus" />
-              <Column field="location" header="Asukoht" />
-              <Column id="Column" name="Column" header="Kuupäev" >
-              <template #body="{data}">
-                {{ showDate(data.date).date }}
-
-              </template>
-              </Column>
-              <Column class="w-30" header="Kellaaeg">
-              <template #body="{data}">
-                {{ showDate(data.date).time }}
-
-              </template>
-              </Column>
-              <Column v-if="!isAthlete">
-                  <template #body="{ data }">
-                      <router-link class="ring"
-                                   :to="'update/' + data.id">
-                          ⭮
-                      </router-link>
-
-                      <button class="delete"
-                              @click="remove(data)">
-                          Delete
-                      </button>
-
+          <div class="moving-text-container">
+                  <template>
                       <button class="details"
-                              @click="showDetails(data)">
-                          Details
+                              @click="Link(data)">
+                          Link
                       </button>
                   </template>
-              </Column>
+          <a v-if=" 1 > 0" field="link">Vue link 123</a>
+          <a v-else href="https://vuejs.org/guide/essentials/conditional.html">Vue link 1312</a>
+          </div>	
+        
+        <DataTable :value="sites">
+              <Column field="link" header="Nimetus" />
+              <Column field="id" header="Nimetus" />
           </DataTable>
-          <div v-else>Sündmused puuduvad</div>
       </div>
-    <div v-if="showPopup" class="popup">
-      <div class="popup-inner">
-        <h2>Event Details</h2>
-        <ul>
-          <li v-for="(value, key) in selectedEvent" :key="key">
-            {{ key }}: {{ value }}
-          </li>
-        </ul>
-        <button @click="showPopup = false" class="popupClose">X</button>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">
-import { Event } from '@/models/event';
-import { useEventsStore } from "@/stores/eventsStore";
+import { Sites } from '@/models/funSites';
+import { useSitesStore } from "@/stores/funSitesStore";
 import { storeToRefs } from "pinia";
 import { defineProps, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
-
-const route = useRoute();
-
-watch(route, (to, from) => {
-  // Check if the route has changed meaningfully before calling load.
-  if (to.path !== from.path || to.query !== from.query) {
-    eventsStore.load();
-  }
-}, { deep: true });
-
-defineProps<{ title: String, isAthlete: Boolean }>();
-
-const showPopup = ref(false);
-const selectedEvent = ref({});
-
-const showDetails = (event: Event) => {
-  selectedEvent.value = event;
-  showPopup.value = true;
-};
-
-const eventsStore = useEventsStore();
-const { events } = storeToRefs(eventsStore);
-
-onMounted(() => {
-  eventsStore.load();
-});
-
-const showDate = (isoString: string) =>{
-  const dateTime = new Date(isoString);
-  const timeZone = "UTC";
-  const optionsDate: Intl.DateTimeFormatOptions = { year: "numeric", month: "2-digit", day: "2-digit", timeZone: timeZone};
-  const optionsTime: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: timeZone};
-
-  return{
-    date: dateTime.toLocaleDateString(undefined, optionsDate),
-    time: dateTime.toLocaleTimeString(undefined, optionsTime)
-  };
-};
-const remove = (event: Event) => {
-  eventsStore.deleteEvent(event);
-};
 
 </script>
 
@@ -225,6 +149,24 @@ const remove = (event: Event) => {
   0% {color: rgb(37, 179, 37)}
   100% {color: white;}
 
+}
+
+.moving-text-container {
+    animation: moveText 4s linear infinite; /* Adjust duration and timing function as needed */
+}
+@keyframes moveText {
+    0% {
+        transform: translateX(-10vw);
+    }
+    25% {
+        transform: translateY(10vw);
+    }
+    50% {
+        transform: translateX(-10vw);
+    }
+    100% {
+        transform: translateY(10vw);
+    }
 }
 </style>
 

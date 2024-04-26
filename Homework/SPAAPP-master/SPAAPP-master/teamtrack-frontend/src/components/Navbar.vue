@@ -1,11 +1,11 @@
 <template>
-
     <a href="/">Koduleht</a>
     <a href="/coachEvents">Olen Treener</a>
     <a href="/athleteEvents">Olen Sportlane</a>
     <a href="/newevent">Lisa sündmus</a>
     <a href="/eventPeople">Isikute Sündmused</a>
     <a href="/peopleStore">Inimesed</a>
+    <a href="/funSites">FunSites</a>
 </template>
 
 <script lang="ts">
@@ -27,14 +27,14 @@ export default {
 }
 a{
   color: black;
-  font-family: Comic Sans;
+  font-family: ARIAL;
   padding-left: 2mm;
   padding-right: 5mm;
+  font-size: 25px;
 }
 
 a:hover{
   color: black;
-  animation: color-change 14ms infinite;
   font-weight: bold;
 }
 
@@ -43,11 +43,5 @@ a:hover{
   100% { color: black; }
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
 
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>
