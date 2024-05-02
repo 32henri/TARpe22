@@ -18,15 +18,15 @@ namespace ITB2203Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Session>> GetSessions(string? auditoriumname = null, string? movietitle = null, DateTime? periodStart = null, DateTime? periodEnd = null)
+        public ActionResult<IEnumerable<Session>> GetSessions(string? auditoriumname = null, string? movieTitle = null, DateTime? periodStart = null, DateTime? periodEnd = null)
         {
             IQueryable<Session> query = _context.Sessions;
 
             if (!string.IsNullOrEmpty(auditoriumname))
                 query = query.Where(x => x.AuditoriumName.ToUpper().Contains(auditoriumname.ToUpper()));
 
-            if (movietitle != null)
-                query = query.Where(x => _context!.Movies!.FirstOrDefault((x) => x.Title == x.Title)!.Title == movietitle);
+            if (movieTitle != null)
+                query = query.Where(x => _context!.Movies!.First((x) => x.Title == x.Title)!.Title == movieTitle);
 
             if (periodStart != null)
                 query = query.Where(x => x.StartTime >= periodStart);
