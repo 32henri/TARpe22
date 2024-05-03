@@ -3,21 +3,51 @@
           <div class="hidden md:block">
           </div>
           <h1 class="font-bold">{{ title }}</h1>
-          <div class="moving-text-container">
+          <div class="moving-text-container0">
                   <template>
                       <button class="details"
                               @click="Link(data)">
                           Link
                       </button>
                   </template>
-          <a v-if=" 1 > 0" field="link">Vue link 123</a>
-          <a v-else href="https://vuejs.org/guide/essentials/conditional.html">Vue link 1312</a>
-          </div>	
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">Vue link 123</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          </div>
+          <div class="moving-text-container1">
+                  <template>
+                      <button class="details"
+                              @click="Link(data)">
+                          Link
+                      </button>
+                  </template>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">Vue link 12311111</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          </div>
+          <div class="moving-text-container2">
+                  <template>
+                      <button class="details"
+                              @click="Link(data)">
+                          Link
+                      </button>
+                  </template>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">Vue link 1232222222</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          </div>
+          <div class="moving-text-container3">
+                  <template>
+                      <button class="details"
+                              @click="Link(data)">
+                          Link
+                      </button>
+                  </template>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">Vue link 12333333</a>
+          <a href="https://vuejs.org/guide/essentials/conditional.html">-</a>
+          </div>
         
-        <DataTable :value="sites">
-              <Column field="link" header="Nimetus" />
-              <Column field="id" header="Nimetus" />
-          </DataTable>
       </div>
 </template>
 
@@ -151,22 +181,159 @@ import { useRoute } from "vue-router";
 
 }
 
-.moving-text-container {
-    animation: moveText 4s linear infinite; /* Adjust duration and timing function as needed */
+.moving-text-container0 {
+    animation: moveText0 9s linear infinite;
 }
-@keyframes moveText {
-    0% {
-        transform: translateX(-10vw);
-    }
-    25% {
-        transform: translateY(10vw);
-    }
-    50% {
-        transform: translateX(-10vw);
-    }
-    100% {
-        transform: translateY(10vw);
-    }
+.moving-text-container1 {
+    animation: moveText1 4s linear infinite;
+}
+.moving-text-container2 {
+    animation: moveText2 4s linear infinite;
+}
+.moving-text-container3 {
+    animation: moveText3 4s linear infinite;
+}
+@keyframes moveText0 {
+0% {
+    transform: translateX(-400px) translateY(0px);
+}
+10% {
+    transform: translateX(-100px) translateY(1100px);
+}
+20% {
+    transform: translateX(100px) translateY(0px);
+}
+30% {
+    transform: translateX(500px) translateY(300px);
+}
+40% {
+    transform: translateX(0px) translateY(1100px);
+}
+50% {
+    transform: translateX(-600px) translateY(0px);
+}
+60% {
+    transform: translateX(-100px) translateY(0px);
+}
+70% {
+    transform: translateX(0px) translateY(200px);
+}
+80% {
+    transform: translateX(100px) translateY(0px);
+}
+90% {
+    transform: translateX(0px) translateY(210px);
+}
+100% {
+    transform: translateX(-400px) translateY(0px);
+}
+}
+
+@keyframes moveText1 {
+0% {
+    transform: translateX(0px) translateY(0px);
+}
+10% {
+    transform: translateX(0px) translateY(0px);
+}
+20% {
+    transform: translateX(-400px) translateY(300px);
+}
+30% {
+    transform: translateX(200px) translateY(900px);
+}
+40% {
+    transform: translateX(-400px) translateY(-100px);
+}
+50% {
+    transform: translateX(-400px) translateY(-100px);
+}
+60% {
+    transform: translateX(300px) translateY(600px);
+}
+70% {
+    transform: translateX(-100px) translateY(0px);
+}
+80% {
+    transform: translateX(0px) translateY(210px);
+}
+90% {
+    transform: translateX(100px) translateY(0px);
+}
+100% {
+    transform: translateX(0px) translateY(0px);
+}
+}
+@keyframes moveText2 {
+0% {
+    transform: translateX(200px) translateY(500px);
+}
+10% {
+    transform: translateX(-600px) translateY(600px);
+}
+20% {
+    transform: translateX(600px) translateY(700px);
+}
+30% {
+    transform: translateX(-600px) translateY(800px);
+}
+40% {
+    transform: translateX(600px) translateY(900px);
+}
+50% {
+    transform: translateX(-600px) translateY(1000px);
+}
+60% {
+    transform: translateX(600px) translateY(500px);
+}
+70% {
+    transform: translateX(-200px) translateY(200px);
+}
+80% {
+    transform: translateX(100px) translateY(600px);
+}
+90% {
+    transform: translateX(0px) translateY(210px);
+}
+100% {
+    transform: translateX(200px) translateY(500px);
+}
+}
+
+@keyframes moveText3 {
+0% {
+    transform: translateX(100px) translateY(0px);
+}
+10% {
+    transform: translateX(0px) translateY(210px);
+}
+20% {
+    transform: translateX(-100px) translateY(0px);
+}
+30% {
+    transform: translateX(0px) translateY(200px);
+}
+40% {
+    transform: translateX(100px) translateY(0px);
+}
+50% {
+    transform: translateX(0px) translateY(210px);
+}
+60% {
+    transform: translateX(0px) translateY(200px);
+}
+70% {
+    transform: translateX(-100px) translateY(0px);
+}
+80% {
+    transform: translateX(0px) translateY(210px);
+}
+90% {
+    transform: translateX(100px) translateY(0px);
+}
+100% {
+    transform: translateX(100px) translateY(0px);
+}
 }
 </style>
 
