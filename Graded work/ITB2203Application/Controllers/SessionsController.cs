@@ -26,17 +26,30 @@ namespace ITB2203Application.Controllers
                 query = query.Where(x => x.AuditoriumName.ToUpper().Contains(auditoriumname.ToUpper()));
 
             if (movieTitle != null)
-                query = query.Where(x => _context!.Movies!.First((x) => x.Title == x.Title)!.Title == movieTitle);
+                query = query.Where(x => (_context!.Movies!.FirstOrDefault((e) => e.Title == movieTitle)).Id == x.MovieId);
 
             if (periodStart != null)
-                query = query.Where(x => x.StartTime >= periodStart);
+                query = query.Where(x => x.StartTime > periodStart);
 
             if (periodEnd != null)
-                query = query.Where(x => x.StartTime <= periodEnd);
+                query = query.Where(x => x.StartTime < periodEnd);
 
             return query.ToList();
         }
 
+        [HttpGet("{id}/tickets")]
+        public ActionResult<Session> GetSessionTickets(int? ticketNo = null)
+        {
+            var ticketNo = _context.Tickets.Where(t => t.SessionId == id).ToList();
+
+            if (ticketNo != null)
+            {
+                query = query.Where(x => (_context!.Movies!.FirstOrDefault((e) => e.Title == movieTitle)).Id == x.MovieId);
+                return NotFound("No tickets found for this session.");
+            }
+
+            return Ok(tickets);
+        }
 
 
         [HttpGet("{id}")]
