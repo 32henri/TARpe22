@@ -1,0 +1,7 @@
+C:\Users\opilane\source\repos\TARpe22\Homework\REST api loomine\WorkoutApplication\obj\Debug\net7.0\WorkoutApplication.csproj.AssemblyReference.cache
+C:\Users\opilane\source\repos\TARpe22\Homework\REST api loomine\WorkoutApplication\obj\Debug\net7.0\WorkoutApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\opilane\source\repos\TARpe22\Homework\REST api loomine\WorkoutApplication\obj\Debug\net7.0\WorkoutApplication.AssemblyInfoInputs.cache
+C:\Users\opilane\source\repos\TARpe22\Homework\REST api loomine\WorkoutApplication\obj\Debug\net7.0\WorkoutApplication.AssemblyInfo.cs
+C:\Users\opilane\source\repos\TARpe22\Homework\REST api loomine\WorkoutApplication\obj\Debug\net7.0\WorkoutApplication.csproj.CoreCompileInputs.cache
+C:\Users\opilane\source\repos\TARpe22\Homework\REST api loomine\WorkoutApplication\obj\Debug\net7.0\WorkoutApplication.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\opilane\source\repos\TARpe22\Homework\REST api loomine\WorkoutApplication\obj\Debug\net7.0\WorkoutApplication.MvcApplicationPartsAssemblyInfo.cache

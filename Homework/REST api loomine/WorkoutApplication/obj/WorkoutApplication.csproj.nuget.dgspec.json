@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "d:\\repos\\WorkoutApplication\\WorkoutApplication.csproj": {}
+    "C:\\Users\\opilane\\source\\repos\\TARpe22\\Homework\\REST api loomine\\WorkoutApplication\\WorkoutApplication.csproj": {}
   },
   "projects": {
-    "d:\\repos\\WorkoutApplication\\WorkoutApplication.csproj": {
+    "C:\\Users\\opilane\\source\\repos\\TARpe22\\Homework\\REST api loomine\\WorkoutApplication\\WorkoutApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\repos\\WorkoutApplication\\WorkoutApplication.csproj",
+        "projectUniqueName": "C:\\Users\\opilane\\source\\repos\\TARpe22\\Homework\\REST api loomine\\WorkoutApplication\\WorkoutApplication.csproj",
         "projectName": "WorkoutApplication",
-        "projectPath": "d:\\repos\\WorkoutApplication\\WorkoutApplication.csproj",
-        "packagesPath": "C:\\Users\\hener\\.nuget\\packages\\",
-        "outputPath": "d:\\repos\\WorkoutApplication\\obj\\",
+        "projectPath": "C:\\Users\\opilane\\source\\repos\\TARpe22\\Homework\\REST api loomine\\WorkoutApplication\\WorkoutApplication.csproj",
+        "packagesPath": "C:\\Users\\opilane\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\opilane\\source\\repos\\TARpe22\\Homework\\REST api loomine\\WorkoutApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Visual Studio 2022\\Shared components\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hener\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\opilane\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,6 +25,8 @@
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -79,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

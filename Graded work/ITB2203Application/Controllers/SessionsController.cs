@@ -38,16 +38,14 @@ namespace ITB2203Application.Controllers
         }
 
         [HttpGet("{id}/tickets")]
-        public ActionResult<Session> GetSessionTickets(int? ticketNo = null)
+        public ActionResult<TextReader> GetSessionTicket(int id)
         {
-            var ticketNo = _context.Tickets.Where(t => t.SessionId == id).ToList();
+            var tickets = _context.Tickets.Where(t => t.SessionId == id).ToList();
 
-            if (ticketNo != null)
+            if (tickets == null)
             {
-                query = query.Where(x => (_context!.Movies!.FirstOrDefault((e) => e.Title == movieTitle)).Id == x.MovieId);
-                return NotFound("No tickets found for this session.");
+                return NotFound();
             }
-
             return Ok(tickets);
         }
 
